@@ -2,12 +2,20 @@
 
 #include <iostream>
 #include "NodeInterface.h"
+#include "BST.h"
 using namespace std;
 
-class Node : NodeInterface {
+class Node : public NodeInterface {
+
+private:
+
+    Node* leftChild;
+    Node* rightChild;
+    int data;
+    friend class BST; //make private members accessible by BST class
 
 public:
-	Node();
+	Node(int datas);
 	~Node();
 
 	/*
@@ -15,20 +23,20 @@ public:
 	*
 	* @return the data that is stored in this node.
 	*/
-	int getData();
+	int getData() const;
 
 	/*
 	* Returns the left child of this node or null if it doesn't have one.
 	*
 	* @return the left child of this node or null if it doesn't have one.
 	*/
-	NodeInterface * getLeftChild();
+	NodeInterface * getLeftChild() const;
 
 	/*
 	* Returns the right child of this node or null if it doesn't have one.
 	*
 	* @return the right child of this node or null if it doesn't have one.
 	*/
-	NodeInterface * getRightChild();
+	NodeInterface * getRightChild() const;
 
 };

@@ -27,8 +27,13 @@ NodeInterface * BST::getRootNode() {
 	* @return false if unsuccessful (i.e. the int is already in tree)
 	*/
 bool BST::add(int data) {
-    bool test = true;
-    return test;
+    cout << "add"<<endl;
+    Node *ptr = new Node(data);
+    ptr->leftChild = NULL; // To test that the friend relationship works
+    NodeInterface *rval = ptr->getLeftChild();
+    long value = (long)rval;
+    cout << "Added "<<value<<endl;
+    root = ptr;
 }
 
 	/*

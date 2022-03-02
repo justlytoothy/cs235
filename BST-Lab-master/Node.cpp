@@ -2,8 +2,11 @@
 
 #include "Node.h"
 
-Node::Node() {
+Node::Node(int datas) {
     cout << "In Node Constructor" << endl;
+    data = datas;
+    leftChild = NULL;
+    rightChild = NULL;
 }
 Node::~Node() {
     cout << "In Node Deconstructor" << endl;
@@ -14,7 +17,7 @@ Node::~Node() {
 	*
 	* @return the data that is stored in this node.
 	*/
-int Node::getData() {
+int Node::getData() const{
     int test = 1;
     return test;
 }
@@ -24,8 +27,8 @@ int Node::getData() {
 	*
 	* @return the left child of this node or null if it doesn't have one.
 	*/
-NodeInterface * Node::getLeftChild() {
-
+NodeInterface * Node::getLeftChild() const{
+    cout << "Getting Left Child" << endl;
 }
 
 	/*
@@ -33,6 +36,6 @@ NodeInterface * Node::getLeftChild() {
 	*
 	* @return the right child of this node or null if it doesn't have one.
 	*/
-NodeInterface * Node::getRightChild() {
-
+NodeInterface * Node::getRightChild() const{
+    cout << "Getting Right Child" << endl;
 }
