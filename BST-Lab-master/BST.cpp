@@ -76,5 +76,7 @@ bool BST::isGreat(Node* old,Node* lNew) {
 }
 
 bool BST::isDup(int data) {
-
+    for (int i = 0; i < howMany; i++) {
+        
+    }
 }

@@ -39,3 +39,11 @@ NodeInterface * Node::getRightChild() const{
     cout << "Getting Right Child" << endl;
     return rightChild;
 }
+
+bool Node::setLeft(Node *rootPtr, Node *leftPtr) {
+        rootPtr->leftChild = leftPtr;
+    }
+
+bool Node::setRight(Node *rootPtr, Node *rightPtr) {
+    rootPtr->rightChild = rightPtr;
+}

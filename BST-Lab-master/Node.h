@@ -39,4 +39,8 @@ public:
 	*/
 	NodeInterface * getRightChild() const;
 
+    bool setLeft(Node *rootPtr, Node *leftPtr);
+
+    bool setRight(Node *rootPtr, Node *rightPtr);
+
 };
