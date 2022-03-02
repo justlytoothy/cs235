@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include "BSTInterface.h"
@@ -9,9 +8,6 @@ class BST : BSTInterface {
 
 protected:
     Node *root;
-
-
-
 public:
 	BST();
 	~BST();
@@ -46,4 +42,17 @@ public:
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
 	void clear();
+
+    bool isGreat(Node* old,Node* lNew) {
+        if (old < lNew) {
+            return true;
+        }
+        else if (lNew < old) {
+            return false;
+        }
+        else {
+            cout << "Equal" << endl;
+            return false;
+        }
+    }
 };

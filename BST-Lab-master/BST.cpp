@@ -2,6 +2,7 @@
 
 BST::BST () {
     cout << "In constructor" << endl;
+    root = NULL;
 }
 
 BST::~BST () {
@@ -15,7 +16,7 @@ BST::~BST () {
 	* @return the root node for this tree.
 */
 NodeInterface * BST::getRootNode() const{
-
+    return root;
 }
 
 	/*
@@ -25,7 +26,7 @@ NodeInterface * BST::getRootNode() const{
 	* @return false if unsuccessful (i.e. the int is already in tree)
 	*/
 bool BST::add(int data) {
-    cout << "add"<<endl;
+    cout << "adding int to tree"<<endl;
     Node *ptr = new Node(data);
     ptr->leftChild = NULL; // To test that the friend relationship works
     NodeInterface *rval = ptr->getLeftChild();

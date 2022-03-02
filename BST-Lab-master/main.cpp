@@ -25,6 +25,10 @@ int main() {
 	std::ofstream ofs; // create the output stream to write to an output file
 	std::string temp; // used to store the current instruction
 	BST* bstptr = NULL;//the BST
+	//Begin Test
+	bstptr;
+	return 0;
+	//End Test
 
 	for (int i = 0; i < NUM_FILES; i++) {
 		ifs.open(fileArray[i]); // open the file to read from

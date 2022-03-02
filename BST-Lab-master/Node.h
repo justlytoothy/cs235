@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include "NodeInterface.h"
-#include "BST.h"
 using namespace std;
 
 class Node : public NodeInterface {
