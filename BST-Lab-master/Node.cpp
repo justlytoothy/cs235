@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Node.h"
 
 Node::Node(int datas) {
@@ -18,8 +16,7 @@ Node::~Node() {
 	* @return the data that is stored in this node.
 	*/
 int Node::getData() const{
-    int test = 1;
-    return test;
+    return data;
 }
 
 	/*
@@ -29,6 +26,8 @@ int Node::getData() const{
 	*/
 NodeInterface * Node::getLeftChild() const{
     cout << "Getting Left Child" << endl;
+    return leftChild;
+
 }
 
 	/*
@@ -38,4 +37,5 @@ NodeInterface * Node::getLeftChild() const{
 	*/
 NodeInterface * Node::getRightChild() const{
     cout << "Getting Right Child" << endl;
+    return rightChild;
 }

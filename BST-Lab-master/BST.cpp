@@ -1,5 +1,3 @@
-#pragma once
-
 #include "BST.h"
 
 BST::BST () {
@@ -16,7 +14,7 @@ BST::~BST () {
 	*
 	* @return the root node for this tree.
 */
-NodeInterface * BST::getRootNode() {
+NodeInterface * BST::getRootNode() const{
 
 }
 

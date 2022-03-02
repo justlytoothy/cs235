@@ -7,12 +7,13 @@ using namespace std;
 
 class Node : public NodeInterface {
 
+friend class BST; //make private members accessible by BST class
+
 private:
 
     Node* leftChild;
     Node* rightChild;
     int data;
-    friend class BST; //make private members accessible by BST class
 
 public:
 	Node(int datas);

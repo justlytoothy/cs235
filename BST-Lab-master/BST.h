@@ -6,6 +6,12 @@
 using namespace std;
 
 class BST : BSTInterface {
+
+protected:
+    Node *root;
+
+
+
 public:
 	BST();
 	~BST();
@@ -18,7 +24,7 @@ public:
 	*
 	* @return the root node for this tree.
 	*/
-	NodeInterface * getRootNode();
+	NodeInterface * getRootNode() const;
 
 	/*
 	* Attempts to add the given int to the BST tree
@@ -40,6 +46,4 @@ public:
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
 	void clear();
-protected:
-	Node *root;
 };
