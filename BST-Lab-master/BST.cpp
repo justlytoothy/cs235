@@ -76,7 +76,55 @@ bool BST::isGreat(Node* old,Node* lNew) {
 }
 
 bool BST::isDup(int data) {
-    for (int i = 0; i < howMany; i++) {
-        
+    Node *searchPtr = root;
+    bool found = false;
+    bool finished = false;
+    while (!found || !finished) {
+        if (searchPtr->leftChild == NULL && searchPtr->rightChild == NULL) {
+            finished = true;
+        }
+        else if (searchPtr->data == data) {
+            found = true;
+            break;
+        }
+        else if (data > searchPtr->data) {
+            searchPtr = searchPtr->rightChild;
+        }
+        else {
+            searchPtr = searchPtr->leftChild;
+        }
     }
+    return found;
 }
+
+/*
+Node *u = root, *prev = NULL, *next;
+    bool found = false;
+    while (u != NULL) {
+        if (prev == u->parent) {
+            if (u->leftChild != NULL) {
+                next = u->leftChild; 
+            } 
+            else if (u->rightChild != NULL){ 
+                next = u->rightChild;
+            }
+            else {
+                next = u->parent;
+            }
+        } 
+        else if (prev == u->leftChild) {
+            if (u->rightChild != NULL) {
+                next = u->rightChild;
+            }
+            else {
+                next = u->parent;
+            }
+        } 
+        else {
+            next = u->parent;
+        }
+        prev = u;
+        u = next;
+    }
+    return found;
+*/

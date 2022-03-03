@@ -3,8 +3,7 @@
 Node::Node(int datas) {
     cout << "In Node Constructor" << endl;
     data = datas;
-    leftChild = NULL;
-    rightChild = NULL;
+    leftChild = rightChild = parent = NULL;
 }
 Node::~Node() {
     cout << "In Node Deconstructor" << endl;

@@ -12,6 +12,7 @@ private:
 
     Node* leftChild;
     Node* rightChild;
+    Node* parent;
     int data;
 
 public:
