@@ -1,22 +1,11 @@
 #include "BST.h"
-
-BST::BST () {
-    cout << "In constructor" << endl;
-    root = NULL;
-}
-
-BST::~BST () {
-    cout << "In destructor" << endl;
-}
-
-
 /*
 	* Returns the root node for this tree
 	*
 	* @return the root node for this tree.
 */
 NodeInterface * BST::getRootNode() const{
-    return root;
+    return this->root;
 }
 
 	/*
@@ -26,21 +15,24 @@ NodeInterface * BST::getRootNode() const{
 	* @return false if unsuccessful (i.e. the int is already in tree)
 	*/
 bool BST::add(int data) {
-    if (isDup(data)) {
-        cout << "adding int to tree"<<endl;
-        Node *ptr = new Node(data);
-        /*ptr->leftChild = NULL; // To test that the friend relationship works
-        NodeInterface *rval = ptr->getLeftChild();
-        long value = (long)rval;
-        cout << "Added "<<value<<endl;
-        root = ptr;*/
-        if (root == NULL) {
-            root = ptr;
-        }
-        else if (root->data < data) {
-            cout << "More work needed to replace root of tree" << endl;
-        }
-        //else if ()
+    //cout << "In big add" << endl;
+    return add(data, this->root);
+}
+
+bool BST::add(int data, Node *&node) {
+    if (node == NULL) {
+        node = new Node(data);
+        howMany++;
+        return true;
+    }
+    else if (node->getData() == data) {
+        return false;
+    }
+    else if (data < node->getData()) {
+        return add(data, node->getLeft());
+    }
+    else {
+        return add(data, node->getRight());
     }
 }
 
@@ -51,28 +43,18 @@ bool BST::add(int data) {
 	* @return false if remove is unsuccessful(i.e. the int is not in the tree)
 	*/
 bool BST::remove(int data) {
-    bool test = true;
-    return test;
+    return remove(this->root, data);
 }
 
 	/*
 	* Removes all nodes from the tree, resulting in an empty tree.
 	*/
 void BST::clear() {
+    cout << "In clear" << endl;
+    recurClear(this->root);
+    this->root = NULL;
+    howMany = 0;
 
-}
-
-bool BST::isGreat(Node* old,Node* lNew) {
-    if (old->data < lNew->data) {
-        return true;
-    }
-    else if (lNew->data < old->data) {
-        return false;
-    }
-    else {
-        cout << "Equal" << endl;
-        return false;
-    }
 }
 
 bool BST::isDup(int data) {
@@ -97,34 +79,52 @@ bool BST::isDup(int data) {
     return found;
 }
 
-/*
-Node *u = root, *prev = NULL, *next;
-    bool found = false;
-    while (u != NULL) {
-        if (prev == u->parent) {
-            if (u->leftChild != NULL) {
-                next = u->leftChild; 
-            } 
-            else if (u->rightChild != NULL){ 
-                next = u->rightChild;
-            }
-            else {
-                next = u->parent;
-            }
-        } 
-        else if (prev == u->leftChild) {
-            if (u->rightChild != NULL) {
-                next = u->rightChild;
-            }
-            else {
-                next = u->parent;
-            }
-        } 
-        else {
-            next = u->parent;
-        }
-        prev = u;
-        u = next;
+void BST::recurClear(Node *node) {
+    if (node != NULL) {
+        recurClear(node->getLeft());
+        recurClear(node->getRight());
+        delete node;
     }
-    return found;
-*/
+}
+
+bool BST::remove(Node *&localRoot,int data) {
+    if (localRoot == NULL) {
+        return false;
+    }
+    else {
+        if (data < localRoot->data) {
+            return remove(localRoot->getLeft(), data);
+        }
+        else if (data > localRoot->data) {
+            return remove(localRoot->getRight(),data);
+        }
+        else {
+            Node *oldRoot = localRoot;
+            if (localRoot->getLeft() == NULL) {
+                localRoot = localRoot->getRight();
+                delete oldRoot;
+                howMany--;
+            }
+            else if (localRoot->getRight() == NULL) {
+                localRoot = localRoot->getLeft();
+                delete oldRoot;
+                howMany--;
+
+            }
+            else {
+                replace(oldRoot, localRoot->getRight());
+                return true;
+            }
+        }
+    }
+}
+
+void BST::replace(Node*& oldRoot, Node*& localRoot) {
+    if (localRoot->getRight() != NULL) {
+        replace(oldRoot,localRoot->getRight());
+    }
+    else {
+        oldRoot->data = localRoot->data;
+        remove(oldRoot->getLeft(), localRoot->data);
+    }
+}

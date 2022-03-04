@@ -8,16 +8,15 @@ class Node : public NodeInterface {
 
 friend class BST; //make private members accessible by BST class
 
-private:
+protected:
 
     Node* leftChild;
     Node* rightChild;
-    Node* parent;
     int data;
 
 public:
-	Node(int datas);
-	~Node();
+	Node(int value) {data = value;leftChild = NULL; rightChild = NULL;};
+	virtual ~Node();
 
 	/*
 	* Returns the data that is stored in this node
@@ -40,8 +39,10 @@ public:
 	*/
 	NodeInterface * getRightChild() const;
 
-    bool setLeft(Node *rootPtr, Node *leftPtr);
+    void setLeft(Node *ptr);
 
-    bool setRight(Node *rootPtr, Node *rightPtr);
+    void setRight(Node *ptr);
+	Node *&getRight();
+	Node *&getLeft();
 
 };

@@ -4,14 +4,11 @@
 #include "Node.h"
 using namespace std;
 
-class BST : BSTInterface {
+class BST : public BSTInterface {
 
-protected:
-    Node *root;
-    int howMany;
 public:
-	BST();
-	~BST();
+	BST() {root = NULL;}
+	virtual ~BST() {clear();}
 
 	//Please note that the class that implements this interface must be made
 	//of objects which implement the NodeInterface
@@ -47,4 +44,12 @@ public:
     bool isGreat(Node* old,Node* lNew);
     
     bool isDup(int data);
+private:
+	bool add(int data, Node *&node);
+	void recurClear(Node *node);
+	bool remove(Node *&localRoot,int data);
+	void replace(Node*& oldRoot, Node*& localRoot);
+protected:
+	Node *root;
+	int howMany;
 };

@@ -26,7 +26,17 @@ int main() {
 	std::string temp; // used to store the current instruction
 	BST* bstptr = NULL;//the BST
 	//Begin Test
-	bstptr;
+	string BSTtoString(BST* bst);
+	bstptr = new BST();
+	bstptr->add(5);
+	cout << BSTtoString(bstptr) << endl;
+	bstptr->add(7);
+	bstptr->add(3);
+	bstptr->add(8);
+	cout << BSTtoString(bstptr) << endl;
+	bstptr->remove(5);
+	cout << "BST after removing 5" << endl << BSTtoString(bstptr) << endl;
+
 	return 0;
 	//End Test
 

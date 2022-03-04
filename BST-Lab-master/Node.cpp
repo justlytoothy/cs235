@@ -1,10 +1,5 @@
 #include "Node.h"
 
-Node::Node(int datas) {
-    cout << "In Node Constructor" << endl;
-    data = datas;
-    leftChild = rightChild = parent = NULL;
-}
 Node::~Node() {
     cout << "In Node Deconstructor" << endl;
 }
@@ -15,6 +10,7 @@ Node::~Node() {
 	* @return the data that is stored in this node.
 	*/
 int Node::getData() const{
+	//cout << "Get data" << endl;
     return data;
 }
 
@@ -24,7 +20,7 @@ int Node::getData() const{
 	* @return the left child of this node or null if it doesn't have one.
 	*/
 NodeInterface * Node::getLeftChild() const{
-    cout << "Getting Left Child" << endl;
+    //cout << "Getting Left Child" << endl;
     return leftChild;
 
 }
@@ -35,14 +31,27 @@ NodeInterface * Node::getLeftChild() const{
 	* @return the right child of this node or null if it doesn't have one.
 	*/
 NodeInterface * Node::getRightChild() const{
-    cout << "Getting Right Child" << endl;
+    //cout << "Getting Right Child" << endl;
     return rightChild;
 }
 
-bool Node::setLeft(Node *rootPtr, Node *leftPtr) {
-        rootPtr->leftChild = leftPtr;
-    }
+void Node::setLeft(Node *ptr) {
+    leftChild = ptr;
+}
 
-bool Node::setRight(Node *rootPtr, Node *rightPtr) {
-    rootPtr->rightChild = rightPtr;
+void Node::setRight(Node *ptr) {
+	rightChild = ptr;
+}
+
+Node*& Node::getRight(){
+	//cout << "Get right" << endl;
+	return rightChild;
+}
+
+
+
+Node*& Node::getLeft(){
+	//cout << "Get left" << endl;
+	return leftChild;
+
 }
