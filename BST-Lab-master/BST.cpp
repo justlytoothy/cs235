@@ -111,10 +111,11 @@ bool BST::remove(Node *&localRoot,int data) {
                 howMany--;
 
             }
-            else {
-                replace(oldRoot, localRoot->getRight());
-                return true;
-            }
+            else 
+                replace(oldRoot, localRoot->getLeft());
+
+
+            return true;
         }
     }
 }

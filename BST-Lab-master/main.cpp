@@ -25,7 +25,7 @@ int main() {
 	std::ofstream ofs; // create the output stream to write to an output file
 	std::string temp; // used to store the current instruction
 	BST* bstptr = NULL;//the BST
-	//Begin Test
+	/*//Begin Test
 	string BSTtoString(BST* bst);
 	bstptr = new BST();
 	bstptr->add(5);
@@ -38,7 +38,7 @@ int main() {
 	cout << "BST after removing 5" << endl << BSTtoString(bstptr) << endl;
 
 	return 0;
-	//End Test
+	//End Test*/
 
 	for (int i = 0; i < NUM_FILES; i++) {
 		ifs.open(fileArray[i]); // open the file to read from
